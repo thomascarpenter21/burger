@@ -13,7 +13,6 @@ function objToSql(ob) {
   return arr.toString();
 }
 
-
 var orm = {
   // The last variable cb represents the anonymous function being passed from server.js
   
