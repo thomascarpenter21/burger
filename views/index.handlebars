@@ -1,0 +1,48 @@
+<div class="row" id="imageCenter">
+      <img scr="https://img.clipartfest.com/0faa87199a5696e7446677dd59f9081c_cheeseburger-cliparts-cheeseburger-clip-art_600-441.png" alt="burger" height="200" width="200" id="imageCenter">
+      </div>
+      <div class="row">
+         <div class="col-lg-4">
+            <div><ul>
+  {{#each burgers}}
+    {{#unless this.devoured}}
+      <li>
+        {{this.burger_name}}
+        <form action="burgers/update/{{this.id}}?_method=PUT" method="POST">
+        <input type="hidden" name="devoured" value="true">
+        <button type="submit">Devour</button>
+        </form>
+
+      </li>
+    {{/unless}}
+  {{/each}}
+</ul></div>
+         </div>
+         <div class="col-lg-4">
+            <h1>Burger</h1>
+             <p>Select Burger, Eat a Burger</p>
+             
+              <form method="POST" action="burgers/create" class="button-size">
+              <textarea type="text" name="burger_name"></textarea>
+              <button type="submit">Add Burger!</button>
+           </div>
+        <div class="col-lg-4">
+            <div>
+               <h2>Burgers that have been devoured</h2>
+    <ul>
+      {{#each burgers}}
+        {{#if this.devoured}}
+          <li>
+            {{this.burger_name}}
+
+            <form action="burgers/update/{{this.id}}?_method=PUT" method="POST">
+              <input type="hidden" name="devoured" value="false">
+              <button type="submit">Un Eat?</button>
+            </form>
+          </li>
+        {{/if}}
+      {{/each}}
+    </ul>
+            </div>
+         </div>
+      </div>
